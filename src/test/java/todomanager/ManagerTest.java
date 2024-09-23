@@ -14,15 +14,15 @@ class ManagerTest
     @Test
     public void sadAddingTask()
     {
-        m.addTask(1,"Sai chandu"," ","2025-09-24"); //Empty description Exception
-        m.addTask(2,"Jenny","Study","20256-10-24"); //Invalid Date Exception
+        //m.addTask(1,"Sai chandu"," ","2025-09-24"); //Empty description Exception
+        //m.addTask(2,"Jenny","Study","20256-10-24"); //Invalid Date Exception
+        Assertions.assertThrows(EmptyDescriptionException.class, ()->m.addTask(1,"Sai chandu"," ","2025-09-24"));
     }
 
     @Test
     public void happyAddingTask()
     {
-        m.addTask(1,"Sai chandu","Study man","2024-09-23");
-        m.addTask(2,"Jenny","Studying sql","2025-10-24");
+        Assertions.assertTrue(m.addTask(2,"Jenny","Studying sql","2025-10-24"));
     }
 
     @Test
@@ -30,7 +30,8 @@ class ManagerTest
     {
         m.addTask(1,"Sai chandu","Study man","2024-09-23");
         m.addTask(2,"Jenny","Studying sql","2025-10-24");
-        m.removeTask(3);//  TaskNotFoundException
+        //m.removeTask(3);//  TaskNotFoundException
+        Assertions.assertThrows(TaskNotFoundException.class,()->m.removeTask(3));
     }
 
     @Test
@@ -38,10 +39,7 @@ class ManagerTest
     {
         m.addTask(1,"Sai chandu","Study man","2024-09-23");
         m.addTask(2,"Jenny","Studying sql","2025-10-24");
-        m.showTask();
-        m.removeTask(1);
-        System.out.println("=========");
-        m.showTask();
+        Assertions.assertTrue(m.removeTask(2));
     }
 
     @Test
