@@ -38,8 +38,10 @@ class ManagerTest
     {
         m.addTask(1,"Sai chandu","Study man","2024-09-23");
         m.addTask(2,"Jenny","Studying sql","2025-10-24");
+        m.showTask();
         m.removeTask(1);
-        System.out.println(m.map);
+        System.out.println("=========");
+        m.showTask();
     }
 
     @Test
